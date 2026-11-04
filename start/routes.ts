@@ -35,3 +35,21 @@ router
       .use(middleware.auth())
   })
   .prefix('/api/v1')
+
+// Route de test
+router.get('test', async () => {
+  return 'API is working!'
+})
+
+// Routes pour le CRUD /students
+router.resource('students', controllers.Students).apiOnly()
+/* est équivalent à :
+router.group(() => {
+router.get('', [controllers.Students, 'index'])
+router.get(':id', [controllers.Students, 'show'])
+router.post('', [controllers.Students, 'store'])
+router.put(':id', [controllers.Students, 'update'])
+router.patch(':id', [controllers.Students, 'update'])
+router.delete(':id', [controllers.Students, 'destroy'])
+}).prefix('students')
+*/
