@@ -1,0 +1,32 @@
+# Description : base de données MySQL et phpMyAdmin pour l'API de suivi des élèves
+#
+# Démarrage : docker compose up -d
+# phpMyAdmin : http://localhost:8081 (utilisateur : root, mot de passe : root)
+services:
+    db:
+        image: mysql:8.4
+        container_name: db_suivi_eleves
+        environment:
+            MYSQL_ROOT_PASSWORD: root
+            MYSQL_DATABASE: db_api_eleves_step_by_step # base créée automatiquement au 1er démarrage
+            MYSQL_USER: db_user
+            MYSQL_PASSWORD: db_user_pass
+        restart: unless-stopped
+        ports:
+            - '6033:3306' # port 6033 sur le PC → port 3306 dans le conteneur
+        volumes:
+            - dbdata:/var/lib/mysql
+    phpmyadmin:
+        image: phpmyadmin:5.2
+        container_name: pma_suivi_eleves
+        depends_on:
+            - db
+        environment:
+            PMA_HOST: db
+            PMA_PORT: 3306
+        restart: unless-stopped
+        ports:
+            - '8081:80'
+        # Les données de la base sont conservées entre les redémarrages des conteneurs
+volumes:
+    dbdata:
