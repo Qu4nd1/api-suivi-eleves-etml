@@ -5,29 +5,43 @@ export default class StudentsController {
   /**
    * Display a list of resource
    */
-  async index({}: HttpContext) {
-    return Student.query().orderBy('name').orderBy('firstname')
+  async index({ response }: HttpContext) {
+    const students = await Student.query().orderBy('name').orderBy('firstname')
+    return response.ok(students)
   }
 
   /**
    * Handle form submission for the create action
    */
-  async store({ request }: HttpContext) {}
+  async store({ request, response }: HttpContext) {
+    const student = await Student.create(request.only(['name', 'firstname']))
+    return response.created(student)
+  }
 
   /**
    * Show individual record
    */
-  async show({ params }: HttpContext) {
-    return Student.findOrFail(params.id)
+  async show({ params, response }: HttpContext) {
+    const student = await Student.findOrFail(params.id)
+    return response.ok(student)
   }
 
   /**
    * Handle form submission for the edit action
    */
-  async update({ params, request }: HttpContext) {}
+  async update({ params, request, response }: HttpContext) {
+    const student = await Student.findOrFail(params.id)
+    student.merge(request.only(['name', 'firstname']))
+    await student.save()
+    return response.ok(student)
+  }
 
   /**
    * Delete record
    */
-  async destroy({ params }: HttpContext) {}
+  async destroy({ params, response }: HttpContext) {
+    const student = await Student.findOrFail(params.id)
+    await student.delete()
+    return response.noContent()
+  }
 }
