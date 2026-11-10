@@ -1,5 +1,6 @@
 import Student from '#models/student'
 import type { HttpContext } from '@adonisjs/core/http'
+import { studentValidator } from '#validators/student'
 
 export default class StudentsController {
   /**
@@ -14,7 +15,8 @@ export default class StudentsController {
    * Handle form submission for the create action
    */
   async store({ request, response }: HttpContext) {
-    const student = await Student.create(request.only(['name', 'firstname']))
+    const { name, firstname } = await request.validateUsing(studentValidator)
+    const student = await Student.create({ name, firstname })
     return response.ok(student)
   }
 
@@ -30,8 +32,9 @@ export default class StudentsController {
    * Handle form submission for the edit action
    */
   async update({ params, request, response }: HttpContext) {
+    const { name, firstname } = await request.validateUsing(studentValidator)
     const student = await Student.findOrFail(params.id)
-    student.merge(request.only(['name', 'firstname']))
+    student.merge({ name, firstname })
     await student.save()
     return response.ok(student)
   }
