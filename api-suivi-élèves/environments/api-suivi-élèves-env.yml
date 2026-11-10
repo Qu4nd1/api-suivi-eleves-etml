@@ -1,0 +1,4 @@
+name: api-suivi-élèves-env
+variables:
+  - name: path
+    value: http://localhost:3333

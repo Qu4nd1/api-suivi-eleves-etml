@@ -1,0 +1,26 @@
+info:
+  name: Update on student
+  type: http
+  seq: 1
+
+http:
+  method: PUT
+  url: '{{path}}/students/:id'
+  params:
+    - name: id
+      value: '6'
+      type: path
+  body:
+    type: json
+    data: |-
+      {
+        "name" : "Brauch",
+        "firstname" : "Altar"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

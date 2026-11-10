@@ -15,7 +15,7 @@ export default class StudentsController {
    */
   async store({ request, response }: HttpContext) {
     const student = await Student.create(request.only(['name', 'firstname']))
-    return response.created(student)
+    return response.ok(student)
   }
 
   /**

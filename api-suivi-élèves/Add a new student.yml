@@ -1,0 +1,22 @@
+info:
+  name: Add a new student
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: '{{path}}/students'
+  body:
+    type: json
+    data: |-
+      {
+        "name": "Root",
+        "firstname": "Root"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
