@@ -33,7 +33,7 @@ export class AuthAccessTokenSchema extends BaseModel {
 }
 
 export class ClassGroupSchema extends BaseModel {
-  static $columns = ['createdAt', 'id', 'name', 'updatedAt'] as const
+  static $columns = ['createdAt', 'id', 'name', 'teacherId', 'updatedAt'] as const
   $columns = ClassGroupSchema.$columns
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime | null
@@ -41,6 +41,8 @@ export class ClassGroupSchema extends BaseModel {
   declare id: number
   @column()
   declare name: string
+  @column()
+  declare teacherId: number | null
   @column.dateTime({ autoCreate: true, autoUpdate: true })
   declare updatedAt: DateTime | null
 }

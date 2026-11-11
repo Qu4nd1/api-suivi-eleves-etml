@@ -7,16 +7,16 @@ export default class ClassGroupsController {
    * Display a list of resource
    */
   async index({ response }: HttpContext) {
-    const classGroup = await ClassGroup.query().orderBy('name')
-    return response.ok(classGroup)
+    const classGroups = await ClassGroup.query().preload('teacher').orderBy('name')
+    return response.ok(classGroups)
   }
 
   /**
    * Handle form submission for the create action
    */
   async store({ request, response }: HttpContext) {
-    const { name } = await request.validateUsing(classGroupValidator)
-    const classGroup = await ClassGroup.create({ name })
+    const { name, teacherId } = await request.validateUsing(classGroupValidator)
+    const classGroup = await ClassGroup.create({ name, teacherId })
     return response.ok(classGroup)
   }
 
@@ -32,9 +32,9 @@ export default class ClassGroupsController {
    * Handle form submission for the edit action
    */
   async update({ params, request, response }: HttpContext) {
-    const { name } = await request.validateUsing(classGroupValidator)
+    const { name, teacherId } = await request.validateUsing(classGroupValidator)
     const classGroup = await ClassGroup.findOrFail(params.id)
-    classGroup.merge({ name })
+    classGroup.merge({ name, teacherId })
     await classGroup.save()
     return response.ok(classGroup)
   }
