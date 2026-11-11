@@ -62,6 +62,66 @@ const routes = {
     tokens: [[0,"students"],[1,"id"]],
     types: placeholder as Registry['students.destroy']['types'],
   },
+  'teachers.index': {
+    methods: ["GET","HEAD"],
+    pattern: '/teachers',
+    tokens: [[0,"teachers"]],
+    types: placeholder as Registry['teachers.index']['types'],
+  },
+  'teachers.store': {
+    methods: ["POST"],
+    pattern: '/teachers',
+    tokens: [[0,"teachers"]],
+    types: placeholder as Registry['teachers.store']['types'],
+  },
+  'teachers.show': {
+    methods: ["GET","HEAD"],
+    pattern: '/teachers/:id',
+    tokens: [[0,"teachers"],[1,"id"]],
+    types: placeholder as Registry['teachers.show']['types'],
+  },
+  'teachers.update': {
+    methods: ["PUT","PATCH"],
+    pattern: '/teachers/:id',
+    tokens: [[0,"teachers"],[1,"id"]],
+    types: placeholder as Registry['teachers.update']['types'],
+  },
+  'teachers.destroy': {
+    methods: ["DELETE"],
+    pattern: '/teachers/:id',
+    tokens: [[0,"teachers"],[1,"id"]],
+    types: placeholder as Registry['teachers.destroy']['types'],
+  },
+  'class_groups.index': {
+    methods: ["GET","HEAD"],
+    pattern: '/classGroups',
+    tokens: [[0,"classGroups"]],
+    types: placeholder as Registry['class_groups.index']['types'],
+  },
+  'class_groups.store': {
+    methods: ["POST"],
+    pattern: '/classGroups',
+    tokens: [[0,"classGroups"]],
+    types: placeholder as Registry['class_groups.store']['types'],
+  },
+  'class_groups.show': {
+    methods: ["GET","HEAD"],
+    pattern: '/classGroups/:id',
+    tokens: [[0,"classGroups"],[1,"id"]],
+    types: placeholder as Registry['class_groups.show']['types'],
+  },
+  'class_groups.update': {
+    methods: ["PUT","PATCH"],
+    pattern: '/classGroups/:id',
+    tokens: [[0,"classGroups"],[1,"id"]],
+    types: placeholder as Registry['class_groups.update']['types'],
+  },
+  'class_groups.destroy': {
+    methods: ["DELETE"],
+    pattern: '/classGroups/:id',
+    tokens: [[0,"classGroups"],[1,"id"]],
+    types: placeholder as Registry['class_groups.destroy']['types'],
+  },
 } as const satisfies Record<string, AdonisEndpoint>
 
 export { routes }

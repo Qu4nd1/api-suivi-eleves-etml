@@ -1,0 +1,14 @@
+info:
+  name: Get all teachers
+  type: http
+
+http:
+  method: GET
+  url: "{{path}}/teachers"
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

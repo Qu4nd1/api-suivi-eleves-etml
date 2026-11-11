@@ -45,6 +45,6 @@ export default class StudentsController {
   async destroy({ params, response }: HttpContext) {
     const student = await Student.findOrFail(params.id)
     await student.delete()
-    return response.noContent()
+    return response.noContent(student)
   }
 }

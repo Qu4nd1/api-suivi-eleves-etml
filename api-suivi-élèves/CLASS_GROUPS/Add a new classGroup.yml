@@ -1,0 +1,21 @@
+info:
+  name: Add a new classGroup
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: '{{path}}/classGroups'
+  body:
+    type: json
+    data: |-
+      {
+        "name": "JKM"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

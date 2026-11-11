@@ -1,0 +1,22 @@
+info:
+  name: Add a new teacher
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: '{{path}}/teachers'
+  body:
+    type: json
+    data: |-
+      {
+        "name" : "root",
+        "firstname" : "root"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

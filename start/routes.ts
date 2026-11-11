@@ -53,3 +53,27 @@ router.patch(':id', [controllers.Students, 'update'])
 router.delete(':id', [controllers.Students, 'destroy'])
 }).prefix('students')
 */
+// Routes pour le CRUD /teachers
+router.resource('teachers', controllers.Teachers).apiOnly()
+/* est équivalent à :
+router.group(() => {
+router.get('', [controllers.Teachers, 'index'])
+router.get(':id', [controllers.Teachers, 'show'])
+router.post('', [controllers.Teachers, 'store'])
+router.put(':id', [controllers.Teachers, 'update'])
+router.patch(':id', [controllers.Teachers, 'update'])
+router.delete(':id', [controllers.Teachers, 'destroy'])
+}).prefix('teachers')
+*/
+// Routes pour le CRUD /classGroups
+router.resource('classGroups', controllers.ClassGroups).apiOnly()
+/* est équivalent à :
+router.group(() => {
+router.get('', [controllers.ClassGroups, 'index'])
+router.get(':id', [controllers.ClassGroups, 'show'])
+router.post('', [controllers.ClassGroups, 'store'])
+router.put(':id', [controllers.ClassGroups, 'update'])
+router.patch(':id', [controllers.ClassGroups, 'update'])
+router.delete(':id', [controllers.ClassGroups, 'destroy'])
+}).prefix('classGroups')
+*/

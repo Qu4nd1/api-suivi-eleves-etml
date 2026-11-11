@@ -1,0 +1,18 @@
+info:
+  name: Delete a teacher
+  type: http
+
+http:
+  method: DELETE
+  url: '{{path}}/teacher/:id'
+  params:
+    - name: id
+      value: ''
+      type: path
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
