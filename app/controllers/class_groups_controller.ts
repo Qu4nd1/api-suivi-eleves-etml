@@ -7,7 +7,7 @@ export default class ClassGroupsController {
    * Display a list of resource
    */
   async index({ response }: HttpContext) {
-    const classGroups = await ClassGroup.query().preload('teacher').orderBy('name')
+    const classGroups = await ClassGroup.query().preload('teacher').orderBy('name', 'asc')
     return response.ok(classGroups)
   }
 
@@ -24,7 +24,10 @@ export default class ClassGroupsController {
    * Show individual record
    */
   async show({ params, response }: HttpContext) {
-    const classGroup = await ClassGroup.findOrFail(params.id)
+    const classGroup = await ClassGroup.query()
+      .preload('teacher')
+      .where('id', params.id)
+      .firstOrFail()
     return response.ok(classGroup)
   }
 
