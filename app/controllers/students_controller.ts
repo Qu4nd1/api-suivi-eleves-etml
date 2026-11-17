@@ -7,7 +7,10 @@ export default class StudentsController {
    * Display a list of resource
    */
   async index({ response }: HttpContext) {
-    const students = await Student.query().orderBy('name').orderBy('firstname')
+    const students = await Student.query()
+      .preload('classGroup')
+      .orderBy('name')
+      .orderBy('firstname')
     return response.ok(students)
   }
 
@@ -15,8 +18,8 @@ export default class StudentsController {
    * Handle form submission for the create action
    */
   async store({ request, response }: HttpContext) {
-    const { name, firstname } = await request.validateUsing(studentValidator)
-    const student = await Student.create({ name, firstname })
+    const { name, firstname, classGroupId } = await request.validateUsing(studentValidator)
+    const student = await Student.create({ name, firstname, classGroupId })
     return response.ok(student)
   }
 
@@ -24,7 +27,7 @@ export default class StudentsController {
    * Show individual record
    */
   async show({ params, response }: HttpContext) {
-    const student = await Student.findOrFail(params.id)
+    const student = await Student.query().preload('classGroup').where('id', params.id).firstOrFail()
     return response.ok(student)
   }
 
@@ -32,9 +35,9 @@ export default class StudentsController {
    * Handle form submission for the edit action
    */
   async update({ params, request, response }: HttpContext) {
-    const { name, firstname } = await request.validateUsing(studentValidator)
+    const { name, firstname, classGroupId } = await request.validateUsing(studentValidator)
     const student = await Student.findOrFail(params.id)
-    student.merge({ name, firstname })
+    student.merge({ name, firstname, classGroupId })
     await student.save()
     return response.ok(student)
   }

@@ -10,8 +10,9 @@ http:
     type: json
     data: |-
       {
-        "name": "root",
-        "firstname": "root"
+        "name": "TEST",
+        "firstname": "TEST",
+        "classGroupId": "4"
       }
   auth: inherit
 

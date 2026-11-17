@@ -48,8 +48,10 @@ export class ClassGroupSchema extends BaseModel {
 }
 
 export class StudentSchema extends BaseModel {
-  static $columns = ['createdAt', 'firstname', 'id', 'name', 'updatedAt'] as const
+  static $columns = ['classGroupId', 'createdAt', 'firstname', 'id', 'name', 'updatedAt'] as const
   $columns = StudentSchema.$columns
+  @column()
+  declare classGroupId: number | null
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime | null
   @column()
