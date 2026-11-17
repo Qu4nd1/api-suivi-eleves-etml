@@ -77,3 +77,12 @@ router.patch(':id', [controllers.ClassGroups, 'update'])
 router.delete(':id', [controllers.ClassGroups, 'destroy'])
 }).prefix('classGroups')
 */
+// Routes imbriquées sur les commentaires// pour le CRUD /students/:student_id/comments
+router.resource('students.comments', controllers.Comments).apiOnly()
+/* est équivalent à :
+router
+  .group(() => {
+    router.resource('comments', controllers.Comments).apiOnly()
+})
+.prefix('students/:student_id')
+*/

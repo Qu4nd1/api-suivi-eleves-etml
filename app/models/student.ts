@@ -1,10 +1,14 @@
 import { StudentSchema } from '#database/schema'
-import { belongsTo } from '@adonisjs/lucid/orm'
-import type { BelongsTo } from '@adonisjs/lucid/types/relations'
+import { belongsTo, hasMany } from '@adonisjs/lucid/orm'
+import type { BelongsTo, HasMany } from '@adonisjs/lucid/types/relations'
 import ClassGroup from './class_group.ts'
+import Comment from './comment.ts'
 
 export default class Student extends StudentSchema {
   // Relation: 1 élève → 1 classe
   @belongsTo(() => ClassGroup)
   declare classGroup: BelongsTo<typeof ClassGroup>
+
+  // Relation : 1 élève -> N commentaires
+  @hasMany(() => Comment) declare comments: HasMany<typeof Comment>
 }

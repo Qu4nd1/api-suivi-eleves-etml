@@ -23,6 +23,11 @@ export type ScannedRoutes = {
     'class_groups.show': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
     'class_groups.update': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
     'class_groups.destroy': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
+    'students.comments.index': { paramsTuple: [ParamValue]; params: {'student_id': ParamValue} }
+    'students.comments.store': { paramsTuple: [ParamValue]; params: {'student_id': ParamValue} }
+    'students.comments.show': { paramsTuple: [ParamValue,ParamValue]; params: {'student_id': ParamValue,'id': ParamValue} }
+    'students.comments.update': { paramsTuple: [ParamValue,ParamValue]; params: {'student_id': ParamValue,'id': ParamValue} }
+    'students.comments.destroy': { paramsTuple: [ParamValue,ParamValue]; params: {'student_id': ParamValue,'id': ParamValue} }
   }
   GET: {
     'profile.profile.show': { paramsTuple?: []; params?: {} }
@@ -32,6 +37,8 @@ export type ScannedRoutes = {
     'teachers.show': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
     'class_groups.index': { paramsTuple?: []; params?: {} }
     'class_groups.show': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
+    'students.comments.index': { paramsTuple: [ParamValue]; params: {'student_id': ParamValue} }
+    'students.comments.show': { paramsTuple: [ParamValue,ParamValue]; params: {'student_id': ParamValue,'id': ParamValue} }
   }
   HEAD: {
     'profile.profile.show': { paramsTuple?: []; params?: {} }
@@ -41,6 +48,8 @@ export type ScannedRoutes = {
     'teachers.show': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
     'class_groups.index': { paramsTuple?: []; params?: {} }
     'class_groups.show': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
+    'students.comments.index': { paramsTuple: [ParamValue]; params: {'student_id': ParamValue} }
+    'students.comments.show': { paramsTuple: [ParamValue,ParamValue]; params: {'student_id': ParamValue,'id': ParamValue} }
   }
   POST: {
     'auth.new_account.store': { paramsTuple?: []; params?: {} }
@@ -49,21 +58,25 @@ export type ScannedRoutes = {
     'students.store': { paramsTuple?: []; params?: {} }
     'teachers.store': { paramsTuple?: []; params?: {} }
     'class_groups.store': { paramsTuple?: []; params?: {} }
+    'students.comments.store': { paramsTuple: [ParamValue]; params: {'student_id': ParamValue} }
   }
   PUT: {
     'students.update': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
     'teachers.update': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
     'class_groups.update': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
+    'students.comments.update': { paramsTuple: [ParamValue,ParamValue]; params: {'student_id': ParamValue,'id': ParamValue} }
   }
   PATCH: {
     'students.update': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
     'teachers.update': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
     'class_groups.update': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
+    'students.comments.update': { paramsTuple: [ParamValue,ParamValue]; params: {'student_id': ParamValue,'id': ParamValue} }
   }
   DELETE: {
     'students.destroy': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
     'teachers.destroy': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
     'class_groups.destroy': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
+    'students.comments.destroy': { paramsTuple: [ParamValue,ParamValue]; params: {'student_id': ParamValue,'id': ParamValue} }
   }
 }
 declare module '@adonisjs/core/types/http' {

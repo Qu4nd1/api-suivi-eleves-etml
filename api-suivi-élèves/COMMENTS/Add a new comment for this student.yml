@@ -1,0 +1,25 @@
+info:
+  name: Add a new comment for this student
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: '{{path}}/students/:id_student/comments'
+  params:
+    - name: id_student
+      value: '17'
+      type: path
+  body:
+    type: json
+    data: |-
+      {
+        "content": "Attention, Mr Lempi s'endort en cours !"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

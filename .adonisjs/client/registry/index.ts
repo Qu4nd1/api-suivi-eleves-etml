@@ -122,6 +122,36 @@ const routes = {
     tokens: [[0,"classGroups"],[1,"id"]],
     types: placeholder as Registry['class_groups.destroy']['types'],
   },
+  'students.comments.index': {
+    methods: ["GET","HEAD"],
+    pattern: '/students/:student_id/comments',
+    tokens: [[0,"students"],[1,"student_id"],[0,"comments"]],
+    types: placeholder as Registry['students.comments.index']['types'],
+  },
+  'students.comments.store': {
+    methods: ["POST"],
+    pattern: '/students/:student_id/comments',
+    tokens: [[0,"students"],[1,"student_id"],[0,"comments"]],
+    types: placeholder as Registry['students.comments.store']['types'],
+  },
+  'students.comments.show': {
+    methods: ["GET","HEAD"],
+    pattern: '/students/:student_id/comments/:id',
+    tokens: [[0,"students"],[1,"student_id"],[0,"comments"],[1,"id"]],
+    types: placeholder as Registry['students.comments.show']['types'],
+  },
+  'students.comments.update': {
+    methods: ["PUT","PATCH"],
+    pattern: '/students/:student_id/comments/:id',
+    tokens: [[0,"students"],[1,"student_id"],[0,"comments"],[1,"id"]],
+    types: placeholder as Registry['students.comments.update']['types'],
+  },
+  'students.comments.destroy': {
+    methods: ["DELETE"],
+    pattern: '/students/:student_id/comments/:id',
+    tokens: [[0,"students"],[1,"student_id"],[0,"comments"],[1,"id"]],
+    types: placeholder as Registry['students.comments.destroy']['types'],
+  },
 } as const satisfies Record<string, AdonisEndpoint>
 
 export { routes }
