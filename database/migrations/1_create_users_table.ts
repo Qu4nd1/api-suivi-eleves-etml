@@ -10,6 +10,9 @@ export default class extends BaseSchema {
       table.string('email', 254).notNullable().unique()
       table.string('password').notNullable()
 
+      // Rôle de l'utilisateur : 'teacher' ou 'admin'
+      table.string('role').notNullable().defaultTo('teacher')
+
       table.timestamp('created_at').notNullable()
       table.timestamp('updated_at').nullable()
     })

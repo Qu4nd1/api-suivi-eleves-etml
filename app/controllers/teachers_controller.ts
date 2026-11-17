@@ -15,8 +15,8 @@ export default class TeachersController {
    * Handle form submission for the create action
    */
   async store({ request, response }: HttpContext) {
-    const { name, firstname, email } = await request.validateUsing(teacherValidator)
-    const teacher = await Teacher.create({ name, firstname, email })
+    const { name, firstname, email, userId } = await request.validateUsing(teacherValidator)
+    const teacher = await Teacher.create({ name, firstname, email, userId })
     return response.ok(teacher)
   }
 
@@ -32,9 +32,9 @@ export default class TeachersController {
    * Handle form submission for the edit action
    */
   async update({ params, request, response }: HttpContext) {
-    const { name, firstname, email } = await request.validateUsing(teacherValidator)
+    const { name, firstname, email, userId } = await request.validateUsing(teacherValidator)
     const teacher = await Teacher.findOrFail(params.id)
-    teacher.merge({ name, firstname, email })
+    teacher.merge({ name, firstname, email, userId })
     await teacher.save()
     return response.ok(teacher)
   }
