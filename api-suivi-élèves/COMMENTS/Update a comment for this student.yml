@@ -5,13 +5,13 @@ info:
 
 http:
   method: PUT
-  url: '{{path}}/students/:id_students/comments/:id_comments'
+  url: "{{path}}/students/:id_students/comments/:id_comments"
   params:
     - name: id_students
-      value: '17'
+      value: "17"
       type: path
     - name: id_comments
-      value: ' 3'
+      value: " 3"
       type: path
   body:
     type: json
@@ -19,7 +19,9 @@ http:
       {
         "content": "Attention, si Mr Lempi ne sort pas en cours, il parle sans arrêt !"
       }
-  auth: inherit
+  auth:
+    type: bearer
+    token: "{{token}}"
 
 settings:
   encodeUrl: true
