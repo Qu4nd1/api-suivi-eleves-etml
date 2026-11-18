@@ -5,13 +5,13 @@ info:
 
 http:
   method: POST
-  url: '{{path}}/api/v1/auth/login'
+  url: "{{path}}/api/v1/auth/login"
   body:
     type: json
     data: |-
       {
-        "email": "gregory.charmier@eduvaud.ch",
-        "password": "0123456789"
+        "email": "kentin.fankhauser@eduvaud.ch",
+        "password": "rootroot"
       }
   auth: inherit
 

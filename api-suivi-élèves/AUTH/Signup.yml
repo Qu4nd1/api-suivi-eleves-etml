@@ -5,13 +5,15 @@ info:
 
 http:
   method: POST
-  url: '{{path}}/api/v1/auth/register'
+  url: '{{path}}/api/v1/auth/signup'
   body:
     type: json
     data: |-
       {
-        "username": "GregLebarbar",
-        "password": "0123456789"
+        "fullName": "Kentin Fankhauser",
+        "email": "kentin.fankhauser@eduvaud.ch",
+        "password": "rootroot",
+        "passwordConfirmation":"rootroot"
       }
   auth: inherit
 
