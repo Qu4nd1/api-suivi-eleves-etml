@@ -6,7 +6,9 @@ info:
 http:
   method: GET
   url: '{{path}}/classGroups'
-  auth: inherit
+  auth:
+    type: bearer
+    token: '{{token}}'
 
 settings:
   encodeUrl: true

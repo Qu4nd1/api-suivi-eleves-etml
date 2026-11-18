@@ -3,4 +3,4 @@ variables:
   - name: path
     value: http://localhost:3333
   - name: token
-    value:
+    value: oat_MQ.V2lnN3VWMEtJOWswLXNHRnlvdkRLWW1FZzA2Nk1FdElLODNVcnBMdzIwNDI2NjQ5ODY
